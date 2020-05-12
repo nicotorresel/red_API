@@ -12,27 +12,11 @@ class Location {
     this.marked = false;
   }
 
-  get name() {
-      return this.name;
-  }
-  get province() {
-      return this.province;
-  }
-  get sections() {
-      return this.sections;
-  }
-  get marked() {
-      return this.marked;
-  }
-  set marcada(x) {
-      this.marked = x;
-  }
-
   // Walter -> Revisar la logica de este metodo - No lo entiendo del todo
   // Walter -> No es necesario usar una variable para el return, si no entra en el return dentro del ciclo, entrara en el de afuera (Comparar con metodo original)
   existSection(location){
     this.sections.forEach((value) => {
-      if (value.existSection(this,location)) {
+      if (value.includes(this,location)) {
         return true;
       }
     }); 

@@ -65,6 +65,7 @@ class MinimimGeneratorTree {
     this.results.forEach((value)=>{
       cost = cost + value.cost;
     });
+    return cost;
   }
 
 }

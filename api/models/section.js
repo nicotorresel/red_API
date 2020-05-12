@@ -1,3 +1,5 @@
+const helper = require('helper');
+
 //lo mas importante es el costo del tramo que es lo que necesitamos para armar kruskal o prim
 
 class Section {
@@ -15,15 +17,7 @@ class Section {
     //es un porcentaje de aumento que se pone cuando la conexion supera los 300 km y deberiamos ponerlo static tmb
     this.increase;
   }
-
-  get destiny() {
-    return this.destiny;
-  }
-
-  get origin() {
-    return this.origin;
-  }
-
+  
   //calculo el costo del tramo con los cv, cf y aumento aunque todavia nose como setearlos al comienzo del programa
   cost() {
     let cost =  this.sectionKm * this.variableCost;
