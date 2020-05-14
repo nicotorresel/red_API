@@ -1,14 +1,15 @@
-const helper = require('helper');
+const helper = require ('../helper');
 
 //lo mas importante es el costo del tramo que es lo que necesitamos para armar kruskal o prim
 
 class Section {
+
   constructor (origin, destiny) {
     this.origin = origin;
     this.destiny = destiny;
     //tramoKm se saca con una formula (haversine) que hice como metodo static.
     //haversine usa coordenadas lat y long de dos puntos para medir la distancia (es una formula ya standar)
-    this.sectionKm = distanciaEnKm(origin, destiny);
+    this.sectionKm = helper.distanciaEnKm(origin, destiny);
     //costo variable por km (todavia nose como ponerlo porque deberia setearse en un comienzo para todo.
     //lo deberiamos poner static
     this.variableCost;
@@ -65,21 +66,21 @@ class Section {
 
   //formula de haversine
   // Walter -> Porque metodo static ??
-  static distanciaEnKm (origin, destiny) {
-    const lat1 = origin.lat;
-    const lon1 = origin.lon;
-    const lat2 = destiny.lat;
-    const lon2 = destiny.lon;
-    const radius = 6371; // Radius of the earth in km
-    const dLat = deg2rad(lat2 - lat1);  // deg2rad below
-    const dLon = deg2rad(lon2 - lon1); 
-    const a = 
-      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-      Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
-      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  // static distanciaEnKm (origin, destiny) {
+  //   const lat1 = origin.lat;
+  //   const lon1 = origin.lon;
+  //   const lat2 = destiny.lat;
+  //   const lon2 = destiny.lon;
+  //   const radius = 6371; // Radius of the earth in km
+  //   const dLat = deg2rad(lat2 - lat1);  // deg2rad below
+  //   const dLon = deg2rad(lon2 - lon1); 
+  //   const a = 
+  //     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+  //     Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+  //     Math.sin(dLon / 2) * Math.sin(dLon / 2);
 
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)); 
-    const distance = radius * c; // Distance in km
-    return distance;
-  }
+  //   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)); 
+  //   const distance = radius * c; // Distance in km
+  //   return distance;
+  // }
 }
