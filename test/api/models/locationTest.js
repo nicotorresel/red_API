@@ -1,5 +1,5 @@
 const assert = require('chai').assert;
-const location = require('../../../api/models/location');  
+const Location = require('../../../api/models/location');  
 
 let = loc1 = new Location('bv','caba', 23424,23424);
 describe('net', function() {
