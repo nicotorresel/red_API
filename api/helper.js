@@ -1,4 +1,5 @@
 
+  var deg2rad = require('deg2rad')
   const distanciaEnKm = (origin, destiny) => {
     const lat1 = origin.lat;
     const lon1 = origin.lon;

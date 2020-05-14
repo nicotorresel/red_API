@@ -84,3 +84,5 @@ class Section {
   //   return distance;
   // }
 }
+
+module.exports = Section;

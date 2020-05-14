@@ -1,4 +1,5 @@
 
+const Section = require('./section');
 class Location {
   constructor(name, province, lat, lon){
     this.name = name;
@@ -10,18 +11,26 @@ class Location {
   }
 
   existSection(location){
-    this.sections.forEach((value) => {
-      if (value.includes(this,location)) {
-        return true;
+    let exist = false;
+    this.sections.forEach((section) => {
+      if (section.origin.isEquals(location) || section.destiny.isEquals(location)) {
+        exist = true;
       }
     }); 
-    return false;   
+    return exist;
   }
 
   addSection(location) {
-    if (!this.existSection(localidad)) {
-      this.sections.push(new Section(this, localidad));
+    if (!this.existSection(location)) {
+      this.sections.push(new Section(this, location));
     }
+  }
+
+  isEquals(location) {
+    return this.name === location.name && 
+           this.province === location.province &&
+           this.lat === location.lat &&
+           this.lon === location.lon;
   }
 }
 
