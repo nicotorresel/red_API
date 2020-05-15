@@ -1,10 +1,12 @@
+const bodyParser = require('body-parser')
 const express = require('express'),
 app = express(),
 port = process.env.PORT || 8080;
+app.use(bodyParser.json())
 
-const firstRouter = require('./api/routes/first-route');
+const generatorTreeRoute = require('./api/routes/minimum-generator-tree-router');
 
-firstRouter(app);
+generatorTreeRoute(app);
 app.listen(port);
 
 console.log(`API running on port ${port}`);
