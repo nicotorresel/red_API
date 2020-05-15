@@ -1,12 +1,12 @@
 class Net {
-  constructor(){
-      this.locations = new Array;
+  constructor() {
+      this.locations = [];
   }
 
   addLocation(location) {
     if (!this.existLocation(location)) {
       this.locations.forEach((includedLocation)=> {
-        addSection(includedLocation, location);
+        this.addSection(includedLocation, location);
       });
       this.locations.push(location);
     }
@@ -21,9 +21,6 @@ class Net {
     anotherLocation.addSection(location);
   }
 
-  get locations(){
-    return this.locations;
-  }
 }
 
 module.exports = Net;

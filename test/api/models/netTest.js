@@ -23,7 +23,7 @@ describe ('Test - Net', () => {
     web1.addLocation(sanMiguel);
     web1.addLocation(joseCPaz);
 
-    assert.equal(web.locations.length, 3);
+    assert.equal(web1.locations.length, 3);
 
   });
 });
