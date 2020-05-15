@@ -31,6 +31,7 @@ class Location {
            this.lat === location.lat &&
            this.lon === location.lon;
   }
+
 }
 
 module.exports = Location;
