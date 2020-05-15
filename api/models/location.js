@@ -1,5 +1,4 @@
-
-const Section = require('./section');
+const Section = require ('./section');
 class Location {
   constructor(name, province, lat, lon){
     this.name = name;

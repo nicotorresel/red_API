@@ -1,4 +1,3 @@
-
 class Net {
   constructor(){
       this.locations = new Array;
@@ -27,4 +26,4 @@ class Net {
   }
 }
 
-module.export = Net;
+module.exports = Net;
