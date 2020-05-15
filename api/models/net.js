@@ -1,6 +1,6 @@
 class Net {
   constructor() {
-      this.locations = [];
+    this.locations = [];
   }
 
   addLocation(location) {

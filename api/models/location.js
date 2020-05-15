@@ -19,9 +19,9 @@ class Location {
     return exist;
   }
 
-  addSection(location) {
+  addSection(location, variableCost, fixedCost, increase) {
     if (!this.existSection(location)) {
-      this.sections.push(new Section(this, location));
+      this.sections.push(new Section(this, location, variableCost, fixedCost, increase));
     }
   }
 

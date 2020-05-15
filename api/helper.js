@@ -1,6 +1,6 @@
 
   var deg2rad = require('deg2rad')
-  const distanciaEnKm = (origin, destiny) => {
+  const kmDistance = (origin, destiny) => {
     const lat1 = origin.lat;
     const lon1 = origin.lon;
     const lat2 = destiny.lat;
@@ -18,20 +18,6 @@
     return distance;
   }
 
-  const variableCost = (cost) =>{
-    return cost;
-  }
-
-  const fixedCost = (cost) =>{
-    return cost;
-  }
-  const increase = (percentage) =>{
-    return percentage;
-  }
-
 module.exports = {
-  distanciaEnKm, 
-  variableCost,
-  fixedCost,
-  increase,
+  kmDistance, 
 };

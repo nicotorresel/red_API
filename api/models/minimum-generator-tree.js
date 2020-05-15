@@ -1,12 +1,10 @@
 // arbol generador minimo (metodo kruskal), al constructor le paso un grafo completo que es la red que armamos
 class MinimimGeneratorTree {
   constructor(net){
-    
-      this.results = new Array;
+    this.results = new Array;
   }
 
   solve() {
-
     let allConections = [];
     net.locations.forEach((location, index) => {
       location.sectios.forEach((section, index) => {
@@ -26,10 +24,6 @@ class MinimimGeneratorTree {
         allConections.sections[index].destiny.marked(true);
       }
     })
-  }
-
-  get sections() {
-    return this.results;
   }
 
   totalCost() {

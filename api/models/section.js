@@ -1,15 +1,15 @@
-const helper = require ('../helper');
-const location = require ('./location');
+const {
+  kmDistance,
+} = require('../helper');
 
 class Section {
-
-  constructor (origin, destiny) {
+  constructor (origin, destiny, variableCost, fixedCost, increase) {
     this.origin = origin;
     this.destiny = destiny;
-    this.sectionKm = helper.distanciaEnKm(origin, destiny);
-    this.variableCost;
-    this.fixedCost;
-    this.increase;
+    this.sectionKm = kmDistance(origin, destiny);
+    this.variableCost = variableCost;
+    this.fixedCost = fixedCost;
+    this.increase = increase;
   }
   
   cost() {
