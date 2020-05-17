@@ -32,4 +32,11 @@ describe('minimun generator tree - TEST', () => {
         assert.equal(finalLocations.length, 4);
     });
 
+    it('Checking numbers of sections in tree', () => {
+        let tree2 = new MinimunGeneratorTree(web);
+        let ret2 = tree2.solve();
+
+        assert.equal(ret2.length, 3);
+    })
+
 });

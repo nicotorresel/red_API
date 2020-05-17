@@ -22,9 +22,8 @@ class Section {
     } 
   }
 
-  includes(location, anotherLocation) {
-    return (location === this.origin && anotherLocation === this.destiny) ||
-           (anotherLocation === this.origin && location === this.destiny);
+  includeLocation(location) {
+    return (location === this.origin  || location === this.destiny);
   }
 
   equals(section) {

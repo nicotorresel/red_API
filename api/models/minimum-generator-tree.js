@@ -1,31 +1,35 @@
-// arbol generador minimo (metodo kruskal), al constructor le paso un grafo completo que es la red que armamos
+const Section = require ('./section');
+const Location = require('./location');
+const Net = require('./net');
+
 class MinimumGeneratorTree {
   constructor(net){
-    this.results = [];
     this.net = net;
+    this.allConections = [];
+    this.results = [];
   }
 
   solve() {
-    let allConections = [];
     this.net.locations.forEach((location, index) => {
       location.sections.forEach((section, index) => {
-        if (!allConections.includes(section)) {
-          allConections.push(section);
+        if (!this.allConections.includes(section)) {
+          this.allConections.push(section);
         }
       });
     });
 
-    allConections.sort((sectionA, sectionB) => (sectionA.cost > sectionB.cost) ? 1 : -1);
-
+    // first sort the array by cost
+    this.allConections.sort((sectionA, sectionB) => (sectionA.cost > sectionB.cost) ? 1 : -1);
+    // then filter the array by deleting duplicates.
+    let filteredConnections = this.filterConnections();
     
-    allConections.forEach((conection, index) => {
-      let tree = allConections[index];
-      if (!this.results.includes(conection) && (!conection.origin.marked || !conection.destiny.marked)) {
+
+    filteredConnections.forEach((conection, index) => {
+      if (!this.results.includes(conection) && (this.originAvailable(conection, this.results) || this.destinyAvailable(conection, this.results))) {
         this.results.push(conection);
-        conection.origin.marked=true;
-        conection.destiny.marked= true;
       }
-    })
+    });
+    return this.results;
   }
 
   totalCost() {
@@ -35,6 +39,46 @@ class MinimumGeneratorTree {
     });
     return cost;
   }
+
+  // this method delete duplicates of section Object.
+  filterConnections() {
+    let ret = [];
+    this.allConections.forEach((section) => {
+      let control = false;
+      ret.forEach((anotherSection) => {
+        if(section.equals(anotherSection)){
+          control = true;
+        }
+      });
+      if(!control){
+        ret.push(section);
+        control = false;
+      }
+    });
+    return ret;
+  } 
+
+  originAvailable(section, list){
+    let ret = true;
+    list.forEach((connection) => {
+      if (connection.includeLocation(section.origin)){
+        ret = false;
+      }
+    });
+    return ret;
+  }
+
+  destinyAvailable(section, list){
+    let ret = true;
+    list.forEach((connection) => {
+      if (connection.includeLocation(section.destiny)){
+        ret = false;
+      }
+    });
+    return ret;
+  }
+
+
 }
 
 module.exports = MinimumGeneratorTree;

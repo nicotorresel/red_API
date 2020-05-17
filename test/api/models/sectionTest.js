@@ -10,7 +10,7 @@ describe('Section - Test', () => {
   it('Checking if exist Section', () => {
     const section1 = new Section(sanMiguel, munis);
 
-    const contains = section1.includes(munis,sanMiguel);
+    const contains = section1.includeLocation(munis,sanMiguel);
     assert.equal(contains, true);
 
   });

@@ -1,12 +1,14 @@
+const Location = require ('./location');
+
 class Net {
   constructor() {
     this.locations = [];
   }
 
-  addLocation(location) {
+  addLocation(location,variableCost, fixedCost, increase) {
     if (!this.existLocation(location)) {
       this.locations.forEach((includedLocation)=> {
-        this.addSection(includedLocation, location);
+        this.addSection(includedLocation, location, variableCost, fixedCost, increase);
       });
       this.locations.push(location);
     }
@@ -16,9 +18,9 @@ class Net {
     return this.locations.includes(location);
   }
 
-  addSection(location, anotherLocation){
-    location.addSection(anotherLocation);
-    anotherLocation.addSection(location);
+  addSection(location, anotherLocation, variableCost, fixedCost, increase){
+    location.addSection(anotherLocation, variableCost, fixedCost, increase);
+    anotherLocation.addSection(location, variableCost, fixedCost, increase);
   }
 
 }
