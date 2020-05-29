@@ -25,8 +25,9 @@ class MinimumGeneratorTree {
     
 
     filteredConnections.forEach((conection, index) => {
-      if (!this.results.includes(conection) && (this.originAvailable(conection, this.results) || this.destinyAvailable(conection, this.results))) {
-        this.results.push(conection);
+      if (!this.results.includes(conection) && 
+         (this.originAvailable(conection, this.results) || this.destinyAvailable(conection, this.results))) {
+             this.results.push(conection);
       }
     });
     return this.results;
