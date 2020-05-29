@@ -16,18 +16,15 @@ const generateTree = (req, res, next) => {
       net.addLocation(element);
     });
 
-    const result = new MinimumGeneratorTree(net);
+    const tree = new MinimumGeneratorTree(net);
+    tree.solve();
 
-    const tree = result.solve();
     const someCost = 0;
-    const response = {};
-    response.finalCost = someCost;
-    response.tree = tree;
-    
-    console.log(JSON.stringify(req.body));
-    console.log(tree);
-
-    res.json(response);
+    const response = {
+      finalCost: someCost,
+      tree: JSON.parse(JSON.stringify(tree.results)),
+    };
+    res.json(response)
   } catch(err) {
     res.json(err);
   }

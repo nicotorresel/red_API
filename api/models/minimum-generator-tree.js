@@ -1,6 +1,7 @@
 const Section = require ('./section');
 const Location = require('./location');
 const Net = require('./net');
+const deepClone = require('lodash/cloneDeep');
 
 class MinimumGeneratorTree {
   constructor(net){
@@ -27,10 +28,17 @@ class MinimumGeneratorTree {
     filteredConnections.forEach((conection, index) => {
       if (!this.results.includes(conection) && 
          (this.originAvailable(conection, this.results) || this.destinyAvailable(conection, this.results))) {
-             this.results.push(conection);
+          this.results.push(conection);
       }
     });
-    return this.results;
+
+    // Override results deleting sections of location inside each section (circular freak)
+    this.results = this.results.map(section => {
+      const sectionCopy = deepClone(section);
+      delete sectionCopy.destiny.sections;
+      delete sectionCopy.origin.sections;
+      return sectionCopy;
+    })
   }
 
   totalCost() {
@@ -78,8 +86,6 @@ class MinimumGeneratorTree {
     });
     return ret;
   }
-
-
 }
 
 module.exports = MinimumGeneratorTree;
